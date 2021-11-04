@@ -1,0 +1,27 @@
+.popup__reset-button {
+  background-image: url(../../../images/Close\ Icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  cursor: pointer;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  transition: 0.6s;
+}
+
+.popup__reset-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 535px) {
+  .popup__reset-button {
+    right: 0;
+    top: -40px;
+  }
+}

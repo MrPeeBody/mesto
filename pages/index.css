@@ -1,0 +1,45 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
+
+@import url(../blocks/page/page.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/main/main.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/logo/logo.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elem/elem.css);
+@import url(../blocks/popup/popup.css);
+
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__wrapper/header__wrapper.css);
+@import url(../blocks/header/__line/header__line.css);
+@import url(../blocks/profile/__wrapper/profile__wrapper.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__container/profile__container.css);
+@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__face/profile__face.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/elements/__wrapper/elements__wrapper.css);
+@import url(../blocks/elements/__elem/elements__elem.css);
+@import url(../blocks/elem/__image/elem__image.css);
+@import url(../blocks/elem/__title/elem__title.css);
+@import url(../blocks/elem/__like/elem__like.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/footer/__wrapper/footer__wrapper.css);
+@import url(../blocks/elem/__block/elem__block.css);
+@import url(../blocks/popup/__window/popup__window.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/__save-button/popup__save-button.css);
+@import url(../blocks/popup/__reset-button/popup__reset-button.css);
+
+@import url(../blocks/popup/_open/popup_open.css)
+
+/* * {
+   border: brown 1px solid;
+} */

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проект - Место</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body class="page">
+    <header class="header header__wrapper">
+      <img
+        src="./images/Vector.svg"
+        alt="логотип сайта место"
+        class="logo header__logo"
+      />
+      <div class="header__line"></div>
+    </header>
+    <main class="main">
+      <section class="profile profile__wrapper">
+        <img
+          src="./images/Avatar.png"
+          alt="аватар Жака Кусто"
+          class="profile__avatar"
+        />
+
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__button"></button>
+          </div>
+
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+      <section class="elements elements__wrapper">
+        <div class="elem elements__elem">
+          <img
+            class="elem__image"
+            src="./images/kirill-pershin-1088404-unsplash.png"
+            alt="картинка локации"
+          />
+          <div class="elem__block">
+            <p class="elem__title">Карачаевск</p>
+            <button class="elem__like"></button>
+          </div>
+        </div>
+        <div class="elem elements__elem">
+          <img
+            class="elem__image"
+            src="./images/kirill-pershin-1404681-unsplash.png"
+            alt="картинка локации"
+          />
+          <div class="elem__block">
+            <p class="elem__title">Гора Эльбрус</p>
+            <button class="elem__like"></button>
+          </div>
+        </div>
+        <div class="elem elements__elem">
+          <img
+            class="elem__image"
+            src="./images/kirill-pershin-1556355-unsplash.png"
+            alt="картинка локации"
+          />
+          <div class="elem__block">
+            <p class="elem__title">Домбай</p>
+            <button class="elem__like"></button>
+          </div>
+        </div>
+        <div class="elem elements__elem">
+          <img
+            class="elem__image"
+            src="./images/kirill-pershin-1404681-unsplash.png"
+            alt="картинка локации"
+          />
+          <div class="elem__block">
+            <p class="elem__title">Гора Эльбрус</p>
+            <button class="elem__like"></button>
+          </div>
+        </div>
+        <div class="elem elements__elem">
+          <img
+            class="elem__image"
+            src="./images/kirill-pershin-1556355-unsplash.png"
+            alt="картинка локации"
+          />
+          <div class="elem__block">
+            <p class="elem__title">Домбай</p>
+            <button class="elem__like"></button>
+          </div>
+        </div>
+        <div class="elem elements__elem">
+          <img
+            class="elem__image"
+            src="./images/kirill-pershin-1088404-unsplash.png"
+            alt="картинка локации"
+          />
+          <div class="elem__block">
+            <p class="elem__title">Карачаево-Черкесия</p>
+            <button class="elem__like"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer footer__wrapper">
+      <p class="footer__copyright">&copy; 2021. Кирилл Симоненко</p>
+    </footer>
+    <section class="popup">
+      <form class="popup__window">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <fieldset class="popup__content">
+          <input
+            type="text"
+            name="username"
+            value=""
+            placeholder="Ваше имя"
+            required
+            class="popup__text popup__user-name"
+          />
+          <input
+            type="text"
+            name="userdoes"
+            value=""
+            placeholder="Пару слов о себе"
+            required
+            class="popup__text popup__user-data"
+          />
+          <input type="submit" value="Сохранить" class="popup__save-button" />
+        </fieldset>
+        <button type="reset" class="popup__reset-button"></button>
+      </form>
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>

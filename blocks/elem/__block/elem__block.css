@@ -1,0 +1,9 @@
+.elem__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 246px;
+  padding-top: 8.6%;
+  padding-bottom: 11%;
+  margin: 0 7.3%;
+}

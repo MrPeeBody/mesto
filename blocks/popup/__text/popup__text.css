@@ -1,0 +1,22 @@
+.popup__text {
+  display: block;
+  width: 100%;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  border: none;
+  padding: 0;
+  line-height: 34px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  
+}
+
+.popup__text:nth-child(2) {
+  margin-top: 30px;
+  
+}
+
+

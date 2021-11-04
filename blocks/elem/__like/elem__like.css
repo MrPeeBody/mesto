@@ -1,0 +1,19 @@
+.elem__like {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/heart.svg);
+  background-color: #FFFFFF;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.6s;
+}
+
+.elem__like:hover {
+  transform: scale(1.07);
+}
+
+
