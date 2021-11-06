@@ -3,4 +3,12 @@
   max-width: 100%;
   min-width: 320px;
   padding: 0 27px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 535px) {
+  .page {
+    padding: 0 19px;
+
+  }
 }
