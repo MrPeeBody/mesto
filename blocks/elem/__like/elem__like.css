@@ -13,7 +13,6 @@
 }
 
 .elem__like:hover {
-  transform: scale(1.07);
   opacity: 0.5;
 }
 

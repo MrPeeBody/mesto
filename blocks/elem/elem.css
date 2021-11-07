@@ -1,5 +1,6 @@
 .elem {
   max-width: 282px;
+  max-height: 361px;
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;

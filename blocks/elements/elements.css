@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3 , auto);
   justify-items: center;
-  gap: 17px;
+  gap:20px 17px;
   max-width: 880px;
   margin: 0 auto;
   padding-top: 51px;
@@ -12,6 +12,7 @@
   .elements {
     grid-template-columns: repeat(2, auto);
     justify-content: center;
+    padding-top: 37px;
   }
 }
 
