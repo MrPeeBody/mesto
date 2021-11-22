@@ -1,0 +1,10 @@
+.popup__full-picture {
+  max-width: 75vw;
+  max-height: 75vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+

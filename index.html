@@ -35,81 +35,31 @@
         <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
-        <div class="elem elements__elem">
-          <img
-            class="elem__image"
-            src="./images/kirill-pershin-1088404-unsplash.png"
-            alt="картинка локации"
-          />
-          <div class="elem__block">
-            <h2 class="elem__title">Карачаевск</h2>
-            <button type="button" class="elem__like"></button>
+        <template id="elem-template">
+          <div class="elem elements__elem">
+            <button type="button" class="elem__trash"></button>
+
+            <img class="elem__image" src="" alt="картинка локации" />
+
+            <div class="elem__block">
+              <h2 class="elem__title"></h2>
+              <button type="button" class="elem__like"></button>
+            </div>
           </div>
-        </div>
-        <div class="elem elements__elem">
-          <img
-            class="elem__image"
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            alt="картинка локации"
-          />
-          <div class="elem__block">
-            <h2 class="elem__title">Гора Эльбрус</h2>
-            <button type="button" class="elem__like"></button>
-          </div>
-        </div>
-        <div class="elem elements__elem">
-          <img
-            class="elem__image"
-            src="./images/kirill-pershin-1556355-unsplash.png"
-            alt="картинка локации"
-          />
-          <div class="elem__block">
-            <h2 class="elem__title">Домбай</h2>
-            <button type="button" class="elem__like"></button>
-          </div>
-        </div>
-        <div class="elem elements__elem">
-          <img
-            class="elem__image"
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            alt="картинка локации"
-          />
-          <div class="elem__block">
-            <h2 class="elem__title">Гора Эльбрус</h2>
-            <button type="button" class="elem__like"></button>
-          </div>
-        </div>
-        <div class="elem elements__elem">
-          <img
-            class="elem__image"
-            src="./images/kirill-pershin-1556355-unsplash.png"
-            alt="картинка локации"
-          />
-          <div class="elem__block">
-            <h2 class="elem__title">Домбай</h2>
-            <button type="button" class="elem__like"></button>
-          </div>
-        </div>
-        <div class="elem elements__elem">
-          <img
-            class="elem__image"
-            src="./images/kirill-pershin-1088404-unsplash.png"
-            alt="картинка локации"
-          />
-          <div class="elem__block">
-            <h2 class="elem__title">Карачаево-Черкесия</h2>
-            <button type="button" class="elem__like"></button>
-          </div>
-        </div>
+        </template>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Кирилл Симоненко</p>
     </footer>
-    <section class="popup">
+    <!-- popup check-in user-->
+    <section class="popup"  id="checkin">
       <div class="popup__container">
-        <button type="button" class="popup__reset-button"></button>
-        <form class="popup__window">
+        <button
+          type="button"
+          class="popup__reset-button popup__reset-button_chekin"
+        ></button>
+        <form class="popup__window popup__window_user">
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__content">
             <input
@@ -131,6 +81,51 @@
             <input type="submit" value="Сохранить" class="popup__save-button" />
           </fieldset>
         </form>
+      </div>
+    </section>
+
+    <!-- Popup add photos -->
+    <section class="popup" id="photo">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__reset-button popup__reset-button_photo"
+        ></button>
+        <form class="popup__window popup__window_photo">
+          <h2 class="popup__title">Новое место</h2>
+          <fieldset class="popup__content">
+            <input
+              type="text"
+              name="username"
+              value=""
+              placeholder="Название места"
+              required
+              class="popup__text popup__text_type_location"
+            />
+            <input
+              type="text"
+              name="userdoes"
+              value=""
+              placeholder="Ссылка на картинку"
+              required
+              class="popup__text popup__text_type_link"
+            />
+            <input type="submit" value="Создать" class="popup__save-button" />
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <!-- popup image -->
+
+    <section class="popup popup_blackout" id="image">
+      <div class="popup__full-picture">
+        <button
+          type="button"
+          class="popup__reset-button popup__reset-button_image"
+        ></button>
+        <img class="popup__image" src="" alt="картинка локации" />
+        <p class="popup__description"></p>
       </div>
     </section>
     <script src="./scripts/script.js"></script>
