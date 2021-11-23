@@ -1,6 +1,6 @@
-const popup = document.querySelector("#checkin");
+const profilePopup = document.querySelector("#checkin");
 const photoPopup = document.querySelector("#photo");
-const imagePopup = document.querySelector('#image')
+const imagePopup = document.querySelector("#image");
 const profileButton = document.querySelector(".profile__button");
 const addPhotoButton = document.querySelector(".profile__add-button");
 const closePopupChekin = document.querySelector(
@@ -13,8 +13,6 @@ const closePopupPhoto = document.querySelector(
 const closePopupImage = document.querySelector(
   ".popup__reset-button.popup__reset-button_image"
 );
-
-const saveContent = document.querySelector(".popup__save-button");
 const userName = document.querySelector(".popup__text_type_name");
 const userData = document.querySelector(".popup__text_type_data");
 const addLocation = document.querySelector(".popup__text_type_location");
@@ -24,29 +22,29 @@ const profileData = document.querySelector(".profile__subtitle");
 const userForm = document.querySelector(".popup__window_user");
 const addPhotoForm = document.querySelector(".popup__window_photo");
 const newTitle = document.querySelector(".elem__title");
-const popupImg = document.querySelector('.popup__image');
-const popupTitle = document.querySelector('.popup__description');
-
+const popupImg = document.querySelector(".popup__image");
+const popupTitle = document.querySelector(".popup__description");
 
 // Функция открывания попапов
 profileButton.addEventListener("click", () => {
-  
-  openUp(popup);
+  userName.value = profileName.textContent;
+  userData.value = profileData.textContent;
+  openPopup(profilePopup);
 });
 
 addPhotoButton.addEventListener("click", () => {
-  openUp(photoPopup);
+  addLocation.value = '';
+  addLink.value = '';
+  openPopup(photoPopup);
 });
 
-function openUp(elem) {
+function openPopup(elem) {
   elem.classList.add("popup_open");
-  userName.value = profileName.textContent;
-  userData.value = profileData.textContent;
 }
 
 // функция закрывания попапов
 closePopupChekin.addEventListener("click", () => {
-  closeDown(popup);
+  closeDown(profilePopup);
 });
 
 closePopupPhoto.addEventListener("click", () => {
@@ -66,7 +64,7 @@ userForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   profileName.textContent = userName.value;
   profileData.textContent = userData.value;
-  closeDown(popup);
+  closeDown(profilePopup);
 });
 
 // реализация добавление карточек через массив объектов
@@ -97,56 +95,44 @@ const initialCards = [
   },
 ];
 
-// перебор массива объектов, с выполнением функции по добавлению новой карты для каждого элемента массива
 initialCards.forEach((item) => {
-  addNewCards(item.name, item.link);
+  addNewCard(item.name, item.link);
 });
 
-// Функция по добавления новой карточки, через клонирование шаблона
-function addNewCards(name, link) {
-  // Получаем содержимое шаблона
+function createNewCard(name, link) {
   const elemTemplate = document.querySelector("#elem-template").content;
-  // обозначаем контейнер для добавления новых элементов
-  const elems = document.querySelector(".elements");
- 
-  // Клонируем содержимое шаблона в переменную
   const elemCard = elemTemplate
     .querySelector(".elem.elements__elem")
     .cloneNode(true);
-
-    
-  // добавляем атрибуты
   elemCard.querySelector(".elem__image").src = link;
+  elemCard.querySelector('.elem__image').alt = 'картинка места - ' + name;
   elemCard.querySelector(".elem__title").textContent = name;
-  // закидываем готовый элемент в контейнер
-  elems.prepend(elemCard);
-
-  // Добавляем лайки
   const likeButton = elemCard.querySelector(".elem__like");
-  likeButton.addEventListener('click', function() {
-  likeButton.classList.toggle('elem__like_switched');
+  likeButton.addEventListener("click", function () {
+    likeButton.classList.toggle("elem__like_switched");
+  });
 
+  const deleteButton = elemCard.querySelector(".elem__trash");
+  deleteButton.addEventListener("click", function () {
+    const deleteElem = deleteButton.closest(".elements__elem");
+    deleteElem.remove();
+  });
 
-})
-// Удаление карточки
-
-const deleteButton = document.querySelector(".elem__trash");
-deleteButton.addEventListener('click', function() {
-const deleteElem = deleteButton.closest(".elements__elem");
-deleteElem.remove() })
-
-  // открытие попапа картинки
-const popupPic = document.querySelector('.elem__image'); 
-const hiden = document.querySelector('.popup__full-picture');  
-popupPic.addEventListener('click', () => {
+  const popupPic = elemCard.querySelector(".elem__image");
   
-  openUp(imagePopup);
-  popupImg.src = link;
-  popupTitle.textContent = name;
-  
-})
+  popupPic.addEventListener("click", () => {
+    openPopup(imagePopup);
+    popupImg.src = link;
+    popupTitle.textContent = name;
+    
+  });
+  return elemCard;
 }
 
+function addNewCard(name, link) {
+  const elems = document.querySelector(".elements");
+  elems.prepend(createNewCard(name, link));
+}
 
 // сохранение данных формы и добавление нового фото ----- popup photo
 
@@ -154,7 +140,6 @@ addPhotoForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const city = addLocation.value;
   const href = addLink.value;
-  addNewCards(city, href);
+  addNewCard(city, href);
   closeDown(photoPopup);
 });
-
