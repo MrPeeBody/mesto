@@ -33,8 +33,7 @@ profileButton.addEventListener("click", () => {
 });
 
 addPhotoButton.addEventListener("click", () => {
-  addLocation.value = '';
-  addLink.value = '';
+  
   openPopup(photoPopup);
 });
 
@@ -110,6 +109,7 @@ function createNewCard(name, link) {
   const likeButton = elemCard.querySelector(".elem__like");
   likeButton.addEventListener("click", function () {
     likeButton.classList.toggle("elem__like_switched");
+    
   });
 
   const deleteButton = elemCard.querySelector(".elem__trash");
@@ -123,6 +123,7 @@ function createNewCard(name, link) {
   popupPic.addEventListener("click", () => {
     openPopup(imagePopup);
     popupImg.src = link;
+    popupImg.alt = 'картинка места ' + name;
     popupTitle.textContent = name;
     
   });
@@ -140,6 +141,8 @@ addPhotoForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const city = addLocation.value;
   const href = addLink.value;
+  addLocation.value = '';
+  addLink.value = '';
   addNewCard(city, href);
   closeDown(photoPopup);
 });
