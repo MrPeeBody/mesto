@@ -15,6 +15,7 @@ const closePopupImage = document.querySelector(
 );
 const userName = document.querySelector(".popup__text_type_name");
 const userData = document.querySelector(".popup__text_type_data");
+const formInput = document.querySelector(".popup__text");
 const addLocation = document.querySelector(".popup__text_type_location");
 const addLink = document.querySelector(".popup__text_type_link");
 const profileName = document.querySelector(".profile__title");
@@ -33,7 +34,6 @@ profileButton.addEventListener("click", () => {
 });
 
 addPhotoButton.addEventListener("click", () => {
-  
   openPopup(photoPopup);
 });
 
@@ -45,6 +45,32 @@ function openPopup(elem) {
 closePopupChekin.addEventListener("click", () => {
   closeDown(profilePopup);
 });
+
+// функция закрытия попапов по клику оверлея
+function closePopupByOverlay(popup) {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeDown(popup);
+    }
+  });
+}
+
+closePopupByOverlay(profilePopup);
+closePopupByOverlay(photoPopup);
+closePopupByOverlay(imagePopup);
+
+// функция закрытия попапов по клав escape
+function closePopupByEsc(popup) {
+  popup.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closeDown(popup);
+    }
+  });
+}
+
+closePopupByEsc(profilePopup);
+closePopupByEsc(photoPopup);
+closePopupByEsc(imagePopup);
 
 closePopupPhoto.addEventListener("click", () => {
   closeDown(photoPopup);
@@ -104,12 +130,11 @@ function createNewCard(name, link) {
     .querySelector(".elem.elements__elem")
     .cloneNode(true);
   elemCard.querySelector(".elem__image").src = link;
-  elemCard.querySelector('.elem__image').alt = 'картинка места - ' + name;
+  elemCard.querySelector(".elem__image").alt = "картинка места - " + name;
   elemCard.querySelector(".elem__title").textContent = name;
   const likeButton = elemCard.querySelector(".elem__like");
   likeButton.addEventListener("click", function () {
     likeButton.classList.toggle("elem__like_switched");
-    
   });
 
   const deleteButton = elemCard.querySelector(".elem__trash");
@@ -119,13 +144,12 @@ function createNewCard(name, link) {
   });
 
   const popupPic = elemCard.querySelector(".elem__image");
-  
+
   popupPic.addEventListener("click", () => {
     openPopup(imagePopup);
     popupImg.src = link;
-    popupImg.alt = 'картинка места ' + name;
+    popupImg.alt = "картинка места " + name;
     popupTitle.textContent = name;
-    
   });
   return elemCard;
 }
@@ -141,8 +165,8 @@ addPhotoForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const city = addLocation.value;
   const href = addLink.value;
-  addLocation.value = '';
-  addLink.value = '';
+  addLocation.value = "";
+  addLink.value = "";
   addNewCard(city, href);
   closeDown(photoPopup);
 });

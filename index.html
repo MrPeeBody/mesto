@@ -54,31 +54,45 @@
       <p class="footer__copyright">&copy; 2021 Кирилл Симоненко</p>
     </footer>
     <!-- popup check-in user-->
-    <section class="popup" id="checkin">
+    <section class="popup" id="checkin" tabindex="0">
       <div class="popup__container">
         <button
           type="button"
           class="popup__reset-button popup__reset-button_chekin"
         ></button>
-        <form class="popup__window popup__window_user">
+
+        <form class="popup__window popup__window_user" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__content">
-            <input
-              type="text"
-              name="username"
-              value=""
-              placeholder="Ваше имя"
-              required
-              class="popup__text popup__text_type_name"
-            />
-            <input
-              type="text"
-              name="userdoes"
-              value=""
-              placeholder="Пару слов о себе"
-              required
-              class="popup__text popup__text_type_data"
-            />
+            <label for="checkin-name-input" class="popup__label">
+              <input
+                id="checkin-name-input"
+                type="text"
+                name="username"
+                value=""
+                placeholder="Ваше имя"
+                required
+                class="popup__text popup__text_type_name"
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="popup__input-error checkin-name-input-error"></span>
+            </label>
+            <label for="checkin-does-input" class="popup__label">
+              <input
+                id="checkin-does-input"
+                type="text"
+                name="userdoes"
+                value=""
+                placeholder="Пару слов о себе"
+                required
+                class="popup__text popup__text_type_data"
+                minlength="2"
+                maxlength="200"
+              />
+              <span class="popup__input-error checkin-does-input-error"></span>
+            </label>
+
             <input type="submit" value="Сохранить" class="popup__save-button" />
           </fieldset>
         </form>
@@ -86,31 +100,42 @@
     </section>
 
     <!-- Popup add photos -->
-    <section class="popup" id="photo">
+    <section class="popup" id="photo" tabindex="0">
       <div class="popup__container">
         <button
           type="button"
           class="popup__reset-button popup__reset-button_photo"
         ></button>
-        <form class="popup__window popup__window_photo">
+        <form class="popup__window popup__window_photo" novalidate>
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__content">
-            <input
-              type="text"
-              name="username"
-              value=""
-              placeholder="Название места"
-              required
-              class="popup__text popup__text_type_location"
-            />
-            <input
-              type="text"
-              name="userdoes"
-              value=""
-              placeholder="Ссылка на картинку"
-              required
-              class="popup__text popup__text_type_link"
-            />
+            <label for="" class="popup__label">
+              <input
+                id="add-place-input"
+                type="text"
+                name="username"
+                value=""
+                placeholder="Название места"
+                required
+                class="popup__text popup__text_type_location"
+                minlength="2"
+                ;
+                maxlength="30"
+              />
+              <span class="popup__input-error add-place-input-error"></span>
+            </label>
+            <label for="" class="popup__label">
+              <input
+                id="add-link-input"
+                type="url"
+                name="userdoes"
+                value=""
+                placeholder="Ссылка на картинку"
+                required
+                class="popup__text popup__text_type_link"
+              />
+              <span class="popup__input-error add-link-input-error"></span>
+            </label>
             <input type="submit" value="Создать" class="popup__save-button" />
           </fieldset>
         </form>
@@ -119,7 +144,7 @@
 
     <!-- popup image -->
 
-    <section class="popup popup_blackout" id="image">
+    <section class="popup popup_blackout" id="image" tabindex="0">
       <div class="popup__full-picture">
         <button
           type="button"
@@ -130,5 +155,6 @@
       </div>
     </section>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

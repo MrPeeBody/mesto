@@ -25,6 +25,8 @@
   opacity: 0.8;
 }
 
+
+
 @media screen and (max-width: 535px) {
   .popup__save-button {
     font-size: 14px;
@@ -32,4 +34,12 @@
     margin: 49px 0 25px;
     height: 46px;
   }
+}
+
+.popup__save-button.form__submit_inactive {
+  pointer-events: none;
+  color: #000000;
+  opacity: 0.2;
+  border: 1px solid #000000;
+  background-color: #E5E5E5;
 }
