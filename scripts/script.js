@@ -25,6 +25,8 @@ const addPhotoForm = document.querySelector(".popup__window_photo");
 const newTitle = document.querySelector(".elem__title");
 const popupImg = document.querySelector(".popup__image");
 const popupTitle = document.querySelector(".popup__description");
+const elems = document.querySelector(".elements");
+const popupSaveButton = document.querySelector('.popup__create-button')
 
 // Функция открывания попапов
 profileButton.addEventListener("click", () => {
@@ -39,6 +41,7 @@ addPhotoButton.addEventListener("click", () => {
 
 function openPopup(elem) {
   elem.classList.add("popup_open");
+  document.addEventListener("keydown", closePopupByEsc);
 }
 
 // функция закрывания попапов
@@ -60,8 +63,9 @@ closePopupByOverlay(photoPopup);
 closePopupByOverlay(imagePopup);
 
 // функция закрытия попапов по клав escape
+
 function closePopupByEsc(popup) {
-  popup.addEventListener("keydown", (evt) => {
+  document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closeDown(popup);
     }
@@ -82,6 +86,7 @@ closePopupImage.addEventListener("click", () => {
 
 function closeDown(elem) {
   elem.classList.remove("popup_open");
+  document.removeEventListener("keydown", closePopupByEsc);
 }
 
 // сохранение данных формы ----- popup user
@@ -155,7 +160,7 @@ function createNewCard(name, link) {
 }
 
 function addNewCard(name, link) {
-  const elems = document.querySelector(".elements");
+  
   elems.prepend(createNewCard(name, link));
 }
 
@@ -169,4 +174,7 @@ addPhotoForm.addEventListener("submit", function (evt) {
   addLink.value = "";
   addNewCard(city, href);
   closeDown(photoPopup);
+  popupSaveButton.setAttribute = true;
+  popupSaveButton.classList.add('form__submit_inactive')
+  
 });

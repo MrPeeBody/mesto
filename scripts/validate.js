@@ -4,24 +4,25 @@ const popupInput = popupForm.querySelector(".popup__text");
 
 // функция событий по всем инпутам
 
-function setEventListeners(form) {
-  const inputList = Array.from(form.querySelectorAll(".popup__text"));
+function setEventListeners(form, {inputSelector, submitButtonSelector}) {
+  const inputList = Array.from(form.querySelectorAll(inputSelector));
 
-  function hideSaveButtons() {
-    const popupSaveButtons = Array.from(
-      form.querySelectorAll(".popup__save-button")
+  function hideSubmitButtons() {
+    const popupSubmitButtons = Array.from(
+      form.querySelectorAll(submitButtonSelector)
     );
-    popupSaveButtons.forEach((button) => {
+    popupSubmitButtons.forEach((button) => {
       toggleButtonState(inputList, button);
     });
   }
 
   inputList.forEach((elem) => {
-    hideSaveButtons();
+    hideSubmitButtons();
 
     elem.addEventListener("input", () => {
       isValid(form, elem);
-      hideSaveButtons();
+      hideSubmitButtons();
+      
     });
   });
 }
@@ -35,6 +36,8 @@ function toggleButtonState(arrInput, button) {
     button.classList.remove("form__submit_inactive");
     button.removeAttribute("disabled", "true");
   }
+
+ 
 }
 
 function isUnvalid(arrInput) {
@@ -53,7 +56,7 @@ function shoWInputError(form, input, message) {
 // прячем спан ошибки
 function hideInputError(form, input) {
   const errorMessage = form.querySelector(`.${input.id}-error`);
-  input.classList.remove("popup_eror");
+  input.classList.remove("popup__eror");
   errorMessage.textContent = "";
 }
 
@@ -66,15 +69,23 @@ function isValid(form, input) {
   }
 }
 
-// функция валидации всех форм
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll(".popup__window"));
+
+const validationConfig = {
+  formSelector: '.popup__window',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__save-button',
+}
+
+function enableValidation(config) {
+  const {formSelector, inputSelector, submitButtonSelector} = config;
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((elem) => {
     elem.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    setEventListeners(elem);
+    const newObj = {inputSelector, submitButtonSelector};
+    setEventListeners(elem, newObj);
   });
 }
 
-enableValidation();
+enableValidation(validationConfig);
