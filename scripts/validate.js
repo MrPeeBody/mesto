@@ -1,10 +1,11 @@
 // Пилим Валидацию
-const popupForm = document.querySelector(".popup__window");
-const popupInput = popupForm.querySelector(".popup__text");
 
 // функция событий по всем инпутам
 
-function setEventListeners(form, {inputSelector, submitButtonSelector}) {
+function setEventListeners(
+  form,
+  { inputSelector, submitButtonSelector, submitInactiveClass }
+) {
   const inputList = Array.from(form.querySelectorAll(inputSelector));
 
   function hideSubmitButtons() {
@@ -12,7 +13,7 @@ function setEventListeners(form, {inputSelector, submitButtonSelector}) {
       form.querySelectorAll(submitButtonSelector)
     );
     popupSubmitButtons.forEach((button) => {
-      toggleButtonState(inputList, button);
+      toggleButtonState(inputList, button, submitInactiveClass);
     });
   }
 
@@ -22,22 +23,19 @@ function setEventListeners(form, {inputSelector, submitButtonSelector}) {
     elem.addEventListener("input", () => {
       isValid(form, elem);
       hideSubmitButtons();
-      
     });
   });
 }
 
 // блокировка и стилизация кнопок попапа
-function toggleButtonState(arrInput, button) {
+function toggleButtonState(arrInput, button, submitInactiveClass) {
   if (isUnvalid(arrInput)) {
-    button.classList.add("form__submit_inactive");
+    button.classList.add(submitInactiveClass);
     button.setAttribute("disabled", "true");
   } else {
-    button.classList.remove("form__submit_inactive");
+    button.classList.remove(submitInactiveClass);
     button.removeAttribute("disabled", "true");
   }
-
- 
 }
 
 function isUnvalid(arrInput) {
@@ -47,16 +45,16 @@ function isUnvalid(arrInput) {
 }
 
 // показываем спан ошибки
-function shoWInputError(form, input, message) {
+function shoWInputError(form, input, message, popupErrorClass) {
   const errorMessage = form.querySelector(`.${input.id}-error`);
-  input.classList.add("popup__eror");
+  input.classList.add(popupErrorClass);
   errorMessage.textContent = message;
 }
 
 // прячем спан ошибки
-function hideInputError(form, input) {
+function hideInputError(form, input, popupErrorClass) {
   const errorMessage = form.querySelector(`.${input.id}-error`);
-  input.classList.remove("popup__eror");
+  input.classList.remove(popupErrorClass);
   errorMessage.textContent = "";
 }
 
@@ -69,21 +67,33 @@ function isValid(form, input) {
   }
 }
 
-
 const validationConfig = {
-  formSelector: '.popup__window',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__save-button',
-}
+  formSelector: ".popup__window",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".popup__save-button",
+  submitInactiveClass: "form__submit_inactive",
+  popupErrorClass: "popup__eror",
+};
 
 function enableValidation(config) {
-  const {formSelector, inputSelector, submitButtonSelector} = config;
+  const {
+    formSelector,
+    inputSelector,
+    submitButtonSelector,
+    submitInactiveClass,
+    popupErrorClass,
+  } = config;
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((elem) => {
     elem.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    const newObj = {inputSelector, submitButtonSelector};
+    const newObj = {
+      inputSelector,
+      submitButtonSelector,
+      submitInactiveClass,
+      popupErrorClass,
+    };
     setEventListeners(elem, newObj);
   });
 }
