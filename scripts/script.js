@@ -46,17 +46,13 @@ const popupTitle = document.querySelector(".popup__description");
 
 const elems = document.querySelector(".elements");
 
-const popupSaveButton = document.querySelector(".popup__create-button");
+
 
 // Функция открывания попапов
 
 function openPopup(elem) {
   elem.classList.add("popup_open");
   document.addEventListener("keydown", closePopupByEsc);
-  closePopupByEsc(profilePopup)
-closePopupByEsc(photoPopup)
-closePopupByEsc(imagePopup)
-
 }
 
 profileButton.addEventListener("click", () => {
@@ -68,20 +64,15 @@ profileButton.addEventListener("click", () => {
 });
 
 addPhotoButton.addEventListener("click", () => {
-
   openPopup(photoPopup);
 });
 
-
-
-
-
-// функция закрытия попапов по клику оверлея
+// функция закрытия попапов по клику ОВЕРЛЕЯ
 
 function closePopupByOverlay(popup) {
   popup.addEventListener("click", (evt) => {
     if (evt.target === evt.currentTarget) {
-      closeDown(popup);
+      closeDownPopup(popup);
     }
   });
 }
@@ -94,30 +85,29 @@ closePopupByOverlay(imagePopup);
 
 // функция закрытия попапов по клав escape
 
-function closePopupByEsc(elem) {
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closeDown(elem) 
-    }
-  });
+function closePopupByEsc(evt) {
+  const openedPopup = document.querySelector(".popup_open");
+  if (evt.key === "Escape") {
+    closeDownPopup(openedPopup);
+  }
 }
 
 // функция закрывания попапов
 
 closePopupChekin.addEventListener("click", () => {
-  closeDown(profilePopup);
+  closeDownPopup(profilePopup);
 });
 
 closePopupPhoto.addEventListener("click", () => {
-  closeDown(photoPopup);
+  closeDownPopup(photoPopup);
 });
 
 closePopupImage.addEventListener("click", () => {
-  closeDown(imagePopup);
+  closeDownPopup(imagePopup);
 });
 
-function closeDown(elem) {
-  elem.classList.remove("popup_open");
+function closeDownPopup(popup) {
+  popup.classList.remove("popup_open");
   document.removeEventListener("keydown", closePopupByEsc);
 }
 
@@ -130,48 +120,10 @@ userForm.addEventListener("submit", function (evt) {
 
   profileData.textContent = userData.value;
 
-  closeDown(profilePopup);
+  closeDownPopup(profilePopup);
 });
 
-// реализация добавление карточек через массив объектов
 
-const initialCards = [
-  {
-    name: "Архыз",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-
-  {
-    name: "Челябинская область",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-
-  {
-    name: "Иваново",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-
-  {
-    name: "Камчатка",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-
-  {
-    name: "Холмогорский район",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-
-  {
-    name: "Байкал",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 
 initialCards.forEach((item) => {
   addNewCard(item.name, item.link);
@@ -240,9 +192,7 @@ addPhotoForm.addEventListener("submit", function (evt) {
 
   addNewCard(city, href);
 
-  closeDown(photoPopup);
+  closeDownPopup(photoPopup);
 
-  popupSaveButton.setAttribute = true;
 
-  popupSaveButton.classList.add("form__submit_inactive");
 });

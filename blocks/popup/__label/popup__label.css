@@ -1,3 +1,6 @@
 .popup__label {
+  display: block;
   position: relative;
 }
+
+
