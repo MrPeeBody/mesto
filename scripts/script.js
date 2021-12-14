@@ -46,7 +46,7 @@ const popupTitle = document.querySelector(".popup__description");
 
 const elems = document.querySelector(".elements");
 
-
+const popupCreateButton = document.querySelector('.popup__create-button')
 
 // Функция открывания попапов
 
@@ -179,7 +179,9 @@ function addNewCard(name, link) {
 
 // сохранение данных формы и добавление нового фото ----- popup photo
 
-addPhotoForm.addEventListener("submit", function (evt) {
+addPhotoForm.addEventListener("submit", createNewPhoto);
+
+function createNewPhoto (evt) {
   evt.preventDefault();
 
   const city = addLocation.value;
@@ -193,6 +195,6 @@ addPhotoForm.addEventListener("submit", function (evt) {
   addNewCard(city, href);
 
   closeDownPopup(photoPopup);
-
-
-});
+  
+  toggleButtonState(addPhotoForm, popupCreateButton, validationConfig.inactiveButtonClass)
+};
